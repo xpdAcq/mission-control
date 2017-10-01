@@ -1,0 +1,198 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{pgffor}
+%\usepackage[backend=biber,
+%                style=authoryear,
+%                natbib=true,
+%                style=numeric-comp
+%                ]{biblatex}
+%\addbibresource[location=remote]{https://raw.githubusercontent.com/CJ-Wright/Masters_Thesis/master/thesis.bib}
+%
+%\AtBeginSection[]{
+%  \begin{frame}
+%  \vfill
+%  \centering
+%  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%    \usebeamerfont{title}\insertsectionhead\par%
+%  \end{beamercolorbox}
+%  \vfill
+%  \end{frame}
+%}
+
+\graphicspath{{../figs/si_cal/}{../figs/}}
+
+\usetheme{Berkeley}
+
+\title{XPD 2017 Cycle 3 Release}
+\author{Christopher J. Wright
+\and Timothy Liu
+\and Simon J. L. Billinge \\
+@CJ-Wright
+\and @chiahaoliu
+\and @sbillinge
+}
+\titlegraphic{\includegraphics[width=5cm, draft=false]{../../logos/294OfficialColumbiaLogo.eps}}
+
+%\logo{%
+%  \makebox[0.95\paperwidth]{%
+%    \includegraphics[width=1cm,keepaspectratio]{../../../mega-logo}%
+%    \hfill%
+%    \includegraphics[width=3.5cm,keepaspectratio]{../logos/294OfficialColumbiaLogo.eps}%
+%  }%
+%}
+
+
+\begin{document}
+\frame{\titlepage}
+
+\section{Introduction}
+\begin{frame}
+\frametitle{Features}
+\begin{itemize}
+\item General Refactor
+\item Enhanced Metadata
+\item Tramp/Tlist shutter protocol
+\item Data Reduction and Visualization Pipeline
+\end{itemize}
+\end{frame}
+
+\section{General Refactor}
+\begin{frame}
+\frametitle{General Refactor}
+Many pieces of the XPD stack needed to be refactored due to the changes in
+Bluesky and Databroker, including:
+\begin{itemize}
+\item Removal of ``dot'' access from headers
+\item Databroker named configurations
+\item Removal of dereferencing of documents
+\end{itemize}
+\end{frame}
+
+\section{Enhanced Metadata}
+\begin{frame}
+\frametitle{Enhanced Metadata - Motivation}
+\begin{itemize}
+\item Metadata is very important for searching data, mineing data, and using data
+effectivly.
+
+\item The XPD stack is designed to make the additon of metadata as easy as possible,
+enabling users to insert sample data via a spreadsheet and tacking metadata
+about the experiment (eg calibration data) automaticaly.
+
+\item Two major features were implemented:
+\begin{itemize}
+\item Long Term Beamline Configuration
+\item Server Client keys
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Long Term Beamline Configuration}
+\begin{itemize}
+\item There is a dedicated file
+\texttt{.../xpdConfig/XPD\_beamline\_config.yml}\\
+in yaml format to hold this kind of information.
+
+\item Please feel free to put whatever information you deam nessisary in this file.
+
+\item This information will be very helpful to make sure that when the data is
+queried one can make certain that the beamline configurations are comparable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Server Client keys}
+\begin{itemize}
+\item xpdAcq now has a system of ``server'' and ``client'' keys to match these data
+sets.
+
+\item In this system ``clients'' and ``servers'' will have a shared key.
+Thus, if one wanted to search for which calibration(s) go with a given data set
+one just searches
+\texttt{db(detecter\_calibration\_server\_uid=
+header['detector\_calibration\_client\_uid'])}.
+
+\item This system will allow for (in a future release) overriding calibrations and
+other pieces of linked data and data analysis when calibrations are taken after
+the sample data.
+\end{itemize}
+\end{frame}
+
+\section{Tramp/Tlist shutter protocol}
+
+\begin{frame}
+\frametitle{Tramp/Tlist shutter protocol}
+\begin{itemize}
+\item Keeping the detector as clean/sensitive as possible
+\item Some scans don't take images continously
+(eg while waiting for temperature equilibration)
+\item Temperature based scan plans now have the option to close the shutter
+when not taking images (see documentation for details)
+\end{itemize}
+\end{frame}
+
+\section{Data Reduction and Visualization Pipeline}
+
+\begin{frame}
+\frametitle{Data Reduction and Visualization Pipeline - Motovation}
+
+\begin{itemize}
+\item Users walk away with resonably analyzed data \\
+(using some of the best tools in the community)
+\item Users use XPD/NSLS-II/BNL's high powered computational resources
+\item Allows for human-in-the-loop experiment tuning \\
+(does my data look good?)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Usage and capabilities}
+The system is designed to do what you expect:
+
+\begin{itemize}
+\item Visualizes data as it comes off the detector
+    \begin{itemize}
+    \item dark subtracted image
+    \item mask
+    \item $I(Q)$
+    \item $I(2\theta)$
+    \item $F(Q)$
+    \item $G(r)$
+    \end{itemize}
+\item Writes files to \texttt{tiff\_base} as data is analyzed
+    \begin{itemize}
+    \item dark subtracted image
+    \item calibration \texttt{.poni} file
+    \item mask \texttt{.msk} file
+    \item $I(Q)$
+    \item $I(2\theta)$
+    \item $G(r)$
+    \item metadata
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Live Demo}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+Much of this release is infrastructural, some of which is easy to see
+(live visualization), others less so (server client links).
+
+Long term these will help us to accive many of our goals:
+\begin{itemize}
+\item database of analyzed data
+\item adaptive scan logic
+\item automated experimentation
+\end{itemize}
+\end{frame}
+
+\end{document}
