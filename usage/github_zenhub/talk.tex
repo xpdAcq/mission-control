@@ -1,0 +1,165 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{pgffor}
+\usepackage{hyperref}
+%\usepackage[backend=biber,
+%                style=authoryear,
+%                natbib=true,
+%                style=numeric-comp
+%                ]{biblatex}
+%\addbibresource[location=remote]{https://raw.githubusercontent.com/CJ-Wright/Masters_Thesis/master/thesis.bib}
+%
+%\AtBeginSection[]{
+%  \begin{frame}
+%  \vfill
+%  \centering
+%  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%    \usebeamerfont{title}\insertsectionhead\par%
+%  \end{beamercolorbox}
+%  \vfill
+%  \end{frame}
+%}
+
+\graphicspath{{../figs/si_cal/}{../figs/}}
+
+\usetheme{Berkeley}
+
+\title{GitHub workflow}
+\author{Christopher J. Wright
+\and Timothy Liu
+\and Simon J. L. Billinge \\
+@CJ-Wright
+\and @chiahaoliu
+\and @sbillinge
+}
+\titlegraphic{\includegraphics[width=5cm, draft=false]{/media/christopher/DATA/Research/Columbia/logos/294OfficialColumbiaLogo.eps}}
+
+%\logo{%
+%  \makebox[0.95\paperwidth]{%
+%    \includegraphics[width=1cm,keepaspectratio]{../../../mega-logo}%
+%    \hfill%
+%    \includegraphics[width=3.5cm,keepaspectratio]{../logos/294OfficialColumbiaLogo.eps}%
+%  }%
+%}
+
+
+\begin{document}
+\frame{\titlepage}
+
+\section{Introduction}
+\begin{frame}
+    \frametitle{Motivation}
+    \pause
+    Building software is complex
+
+    \pause
+    So is requesting features
+
+    \pause
+    So is communicating the software's status
+
+    \pause
+    This talk/demo/Q\&A is designed to help with the last two
+\end{frame}
+
+\section{Release}
+\begin{frame}
+    \frametitle{What is a release?}
+    Bundle of upgrades
+
+    \pause
+    Done every cycle or half cycle
+
+    \pause
+    Has definite specs
+
+    \pause
+    Releases include:
+    \begin{enumerate}
+        \pause
+        \item testing
+        \pause
+        \item documentation
+        \pause
+        \item staff training
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What is being released next cycle?}
+    \pause
+    At a glance: look at the milestones\\
+    \url{https://github.com/xpdAcq/mission-control/milestones}
+
+    \pause
+    Broad strokes: go to releases folder\\
+    \url{https://github.com/xpdAcq/mission-control/tree/master/releases}
+
+    \pause
+    Details: filter issues by milestone\\
+    \url{https://github.com/xpdAcq/mission-control/issues?q=is\%3Aopen+is\%3Aissue+milestone\%3A\%222018+Cycle+Q1\%22}
+\end{frame}
+
+\begin{frame}
+\frametitle{Release Discussion}
+\end{frame}
+
+\section{Feature Request}
+\begin{frame}
+    \frametitle{What is a feature request}
+    Self contained upgrade
+    \pause
+
+    Made by anyone
+    \begin{itemize}
+        \item Dev group
+        \item Staff
+        \item Users
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What features have been requested?}
+    Go to issues: \url{https://github.com/xpdAcq/mission-control/issues}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What is the status of my feature?}
+    Go to feature (make sure logged into ZenHub)
+    \url{https://github.com/xpdAcq/mission-control/issues/6}
+
+    See Issues Completed
+\end{frame}
+
+\begin{frame}
+    \frametitle{How do I request a feature?}
+    \begin{enumerate}
+        \pause
+        \item Create an issue in mission-control
+        \url{https://github.com/xpdAcq/mission-control/issues}
+        \pause
+        \item Write a post in the xpd-users/xpd-dev forum
+        (with [Feature Request])
+    \end{enumerate}
+
+    \pause
+    We will review the request
+
+    \pause
+    If accepted we'll add issues
+
+    \pause
+    Potentially add to release
+
+    \pause
+    Once all issues closed it's implemented!
+\end{frame}
+\begin{frame}
+\frametitle{Recap}
+\end{frame}
+\frame{Questions}
+
+\end{document}
