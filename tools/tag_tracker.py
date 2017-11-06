@@ -16,7 +16,7 @@ def create_repo_dict(repo_path, authors=None,
                  ENTRYTYPE='software')
         if authors:
             d['author'] = ', '.join(authors)
-        d['ID'] = d['title'] + d['version']
+        d['ID'] = d['title'] + '-' + d['version']
         d['tag'] = 'DMREF'
         l[str(tag)] = d
     return l
@@ -54,4 +54,6 @@ if __name__ == '__main__':
     db.entries = s2
     writer = BibTexWriter()
     print(writer.write(db))
+    with open('software.bib', 'w') as bibfile:
+        bibfile.write(writer.write(db))
 
