@@ -11,13 +11,14 @@ def create_repo_dict(repo_path, authors=None,
     for tag in tags:
         d = dict(title=os.path.split(repo_path)[-1],
                  version=str(tag),
-                 date=str(tag.commit.committed_datetime.date()),
+                 year=str(tag.commit.committed_datetime.year),
+                 month=str(tag.commit.committed_datetime.month),
                  url=base_url + os.path.split(repo_path)[-1],
                  ENTRYTYPE='software')
         if authors:
             d['author'] = ', '.join(authors)
         d['ID'] = d['title'] + '-' + d['version']
-        d['tag'] = 'DMREF'
+        d['grant'] = 'DMREF'
         l[str(tag)] = d
     return l
 
@@ -32,12 +33,14 @@ def track_repos(repo_path_list, authors_list, base_urls):
 if __name__ == '__main__':
     from pprint import pprint
     a = '/home/christopher/dev/'
+    if not os.path.isdir(a):
+        a = '/Users/timothyliu/Repo/'
     rl = [a + b for b in ['xpdAn', 'xpdAcq', 'SHED', 'streamz']]
-    authors_list = [('Timothy Liu', 'Christopher J. Wright',
+    authors_list = [('Christopher J. Wright', 'Chia-Hao Liu',
                      'Simon J. L. Billinge'),
-                    ('Christopher J. Wright', 'Timothy Liu',
+                    ('Chia-Hao Liu', 'Christopher J. Wright',
                      'Simon J. L. Billinge'),
-                    ('Christopher J. Wright', 'Timothy Liu',
+                    ('Christopher J. Wright', 'Chia-Hao Liu',
                      'Julien Lhermitte', 'Simon J. L. Billinge'),
                     ('Christopher J. Wright', 'Matthew Rocklin',
                      'Julien Lhermitte', 'Simon J. L. Billinge')]
@@ -54,6 +57,6 @@ if __name__ == '__main__':
     db.entries = s2
     writer = BibTexWriter()
     print(writer.write(db))
-    with open('software.bib', 'w') as bibfile:
+    with open('bg-software.bib', 'w') as bibfile:
         bibfile.write(writer.write(db))
 
