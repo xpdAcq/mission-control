@@ -11,7 +11,7 @@ Releases, Installers, Specs, and more!
 
 # Build status
 | Repo | Build | Coverage | Health | Version | Downloads|
-|:-------:|:-----:|:--------:|:------:|
+|:-------:|:-----:|:--------:|:------:|:------:|:------:|
 '''
 for b in ['xpdSim', 'streamz_ext', 'xpdtools', 'SHED', 'xpdAn', 'xpdAcq',
           'xpd-shadow']:
