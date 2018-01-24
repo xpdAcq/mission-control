@@ -6,12 +6,12 @@ main_format=dict(
     nsls_version='[![Anaconda-Server Badge](https://anaconda.org/lightsource2-tag/{name}/badges/version.svg)](https://anaconda.org/lightsource2-tag/{name})',
     downloads='[![Anaconda-Server Badge](https://anaconda.org/conda-forge/{name}/badges/downloads.svg)](https://anaconda.org/conda-forge/{name})')
 
-a = '''|{name}|{build}|{coverage}|{health}|{cf_version}|{nsls_version}|{downloads}|\n'''
+a = '''|{name}|{build}|{coverage}|{health}|{cf_version} <br/> {nsls_version}|{downloads}|\n'''
 c = '''# mission-control
 Releases, Installers, Specs, and more!
 
 # Build status
-| Repo | Build | Coverage | Health | CF Version | NSLS Version | Downloads|
+| Repo | Build | Coverage | Health | CF Version <br/> NSLS Version | Downloads|
 |:-------:|:-----:|:--------:|:------:|:------:|:------:|:------:|
 '''
 for b in ['xpdSim', 'streamz_ext', 'xpdtools', 'SHED', 'xpdAn', 'xpdAcq',
