@@ -14,6 +14,7 @@ activate it first):
 ```bash
 conda install {} -c conda-forge
 ```
+
 If you do not use conda (and we recommend you do) you may download and build
 the sources from the links below.  Unpack the sources, then in the base
 directory type
