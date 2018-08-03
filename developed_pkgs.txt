@@ -1,0 +1,7 @@
+xpdsim
+streamz_ext
+xpdtools
+shed
+xpdacq
+xpdan
+streamz
