@@ -11,7 +11,7 @@ for f in ['../developed_pkgs.txt', '../maintained_pkgs.txt']:
     with open(f, 'r') as ff:
         pkgs.extend(ff.read().split('\n'))
 
-with indir('lightsource2-recipes'):
+with indir('lightsource2-recipes/recipes-tag'):
     t = 'https://raw.githubusercontent.com/conda-forge/{}-feedstock/' \
         'master/recipe/meta.yaml'
     for b in pkgs:
