@@ -5,3 +5,4 @@ shed
 xpdacq
 xpdan
 streamz
+rapidz

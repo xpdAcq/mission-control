@@ -11,7 +11,12 @@ for f in ['../developed_pkgs.txt', '../maintained_pkgs.txt']:
     with open(f, 'r') as ff:
         pkgs.extend(ff.read().split('\n'))
 
+pkgs = [p for p in pkgs if p]
+
 with indir('lightsource2-recipes/recipes-tag'):
+    git checkout master
+    git fetch origin
+    git reset --hard origin/master
     t = 'https://raw.githubusercontent.com/conda-forge/{}-feedstock/' \
         'master/recipe/meta.yaml'
     for b in pkgs:
@@ -25,5 +30,5 @@ with indir('lightsource2-recipes/recipes-tag'):
                 if 'meta.yaml' in g`*`:
                     rm meta.yaml
                 wget @(url)
-    git commit -am "update XPD pacakges"
+    git diff
 print('Please push and PR these changes')
