@@ -18,7 +18,7 @@ out = c
 for n, f in zip(['Developed', 'Maintained'],
             ['../developed_pkgs.txt', '../maintained_pkgs.txt']):
     with open(f, 'r') as ff:
-        pkgs = ff.read().split('\n')
+        pkgs = [p for p in ff.read().split('\n') if p]
 
     out += cc.format(n)
     for b in pkgs:
